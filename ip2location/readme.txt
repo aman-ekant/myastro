@@ -1,0 +1,4 @@
+Here add following files :
+
+  IP2LOCATION-LITE-DB11.IPV6.BIN
+  IP2LOCATION-LITE-DB11.BIN
