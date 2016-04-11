@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html class="firefox" lang="en">
+   <!--<![endif]-->
+   <head>
+      <title>My Astro</title>
+      <link type="text/css" href="{{ url_for('static', filename='includes/articles.css') }}" rel="stylesheet">
+      <link type="text/css" href="{{ url_for('static', filename='includes/tools_forms.css') }}" rel="stylesheet">
+      <link type="text/css" href="{{ url_for('static', filename='includes/base_compressed1.css') }}" rel="stylesheet">
+      <link rel="stylesheet" id="font-awesome-style-css" href="{{ url_for('static', filename='includes/articles.css') }}" type="text/css" media="all">
+      <link rel="stylesheet" id="font-awesome-style-css" href="{{ url_for('static', filename='includes/font-awesome.min.css') }}" type="text/css" media="all">
+      <script src="{{ url_for('static', filename='includes/tabs/jquery.min.js') }}"></script>  
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='includes/tabs/jquery-ui.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='includes/animate.css') }}">
+      <script type="text/javascript" src="{{ url_for('static', filename='includes/tabs/jquery.ui.core.js') }}"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+      <script type="text/javascript" src="{{ url_for('static', filename='jquery.autocomplete.js') }}"></script>
+      <script type="text/javascript">
+         $(function(){
+          $( "#tabs" ).tabs({ disabled: [] });
+          $("#tabs" ).tabs( "enable", 0 );
+         });
+      </script>
+      <style>
+         img.grayscale {
+         filter: url("data:image/svg+xml;utf8,
+         <svg xmlns=\'http://www.w3.org/2000/svg\'>
+            <filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter>
+         </svg>
+         #grayscale"); /* Firefox 3.5+, IE10 */
+         filter: gray; /* IE6-9 */
+         -webkit-filter: grayscale(0%); /* Chrome 19+ & Safari 6+ */
+         -webkit-transition: all .6s ease; /* Fade to color for Chrome and Safari */
+         -webkit-backface-visibility: hidden; /* Fix for transition flickering */
+         cursor:pointer;
+         }
+         img.grayscale:hover {
+         filter: none;
+         -webkit-filter: grayscale(100%);
+         }
+      </style>
+      <link type="text/css" href="{{ url_for('static', filename='includes/font.css') }}" rel="stylesheet">
+   </head>
+   <body class="home page page-template-default right-sidebar" style="background-color:#f3f3f3;font-family:Open Sans !important;">
+      <!-- START HEADER -->
+      <header id="header" >
+         <!-- START MAIN MENU -->
+         <div id="mainmenu-block-bg" style="position: relative; padding-top: 0px; top: 0px; left: 0px; z-index: 11; background: #ffffff;">
+            <div class="wrap">
+               <div class="container">
+                  <div class="row-fluid">
+                     <div class="span12">
+                        <div class="navigation" role="navigation">
+                           <div id="menu">
+                              <div class="menu-main-nav-container">
+                                 <div style="float:left;width:24%;">
+                                    <div style="height:10px;"></div>
+                                    <a href="city-time-zone.html"><img class="grayscale1" src="{{ url_for('static', filename='images/new-logo.jpg') }}"></a>
+                                 </div>
+                                 <div style="float:right;width:10px;">&nbsp;</div>
+                                 <div style="float:right;text-align:right;width:70%;">
+                                    <div style="clear:both;height:25px;"></div>
+                                    <img src="{{ url_for('static', filename='images/add-banner.jpg') }}" width="100%" align="left" style="margin-left:15px;">
+                                    <div style="clear:both;"></div>
+                                 </div>
+                                 <div id="masthead" class="noprint site-header default-header" role="banner" itemscope="itemscope" style="text-align:center;">
+                                    <!-- logo and desc -->
+                                    <div style="clear:both;height:15px;"></div>
+                                    <!-- .secondary-navigation -->
+                                    <a href="" id="site-mobile-navigation-toggle" data-open-text="Navigation&lt;i class='fa fa-navicon'&gt;" data-close-text="Close">Navigation
+                                    <i class="fa fa-navicon"></i>
+                                    </a>
+                                    <nav id="site-navigation" class="main-navigation" role="navigation" itemscope="itemscope" style="margin-top:0px;border:0px;">
+                                       <h3 class="semantic">Site navigation</h3>
+                                       <div class="header-navigation" style="border:0px solid #f00;text-align:center;align:center;">
+                                          <div style="clear:both;height:0px;"></div>
+                                          
+                                      </div>
+                                        
+                                 </div>
+                                 </nav>
+                                   <div id="menu-navigation" class="sf-menu sf-js-enabled sf-arrows" style="text-align:center;width:100%;margin:0px auto;border-top:1px solid #c2c2c2;border-bottom:1px solid #c2c2c2;">
+                                        <div style="clear:both;height:20px;"></div>
+                                       
+                                         <div style="float:left;width:45%;">
+                                       
+                                       <div style="text-align:left;width:100%;margin:0px auto;">
+                                  <div style="text-align:center;margin-top:0px;">
+                           <div style="float:left;"><a href="#" style="color:#0876c2;margin:0px;padding:0px;padding-left:15px;">World date and time clock</a></div>
+                           <div style="float:left;margin:0px;padding:0px;margin-left:15px;">
+                              <input type="text" style="padding:10px;width:330px;margin:0px;" placeholder="City or Country..." class="form-control input-hg day" ><input type="submit" value="Search" style="width:110px;padding:14px 6px 10px;">&nbsp;
+                              <div style="margin-top:15px;float:right;"><i class="fa fa-question-circle" style="font-size:30px;color:#c2c2c2;"></i>
+                              </div>
+                           </div>
+                            </div>
+                            <div style="clear:both;height:7px;"></div>
+                            
+                                    <div style="clear:both;height:5px;"></div>
+                              <span style="color:#444444;margin:0px;padding:0px;font-size:14px;text-transform:capitalize;text-align:left;margin-left:15px;"> Find current time, weather, sun, moon, ephemeris, eclipses and more <br> <span style="margin-left:20px;">Suggestions: <a href="#" style="display:inline;padding:0px;font-size:13px;text-transform:capitalize;color:#0876c2;">Hollywood</a> | <a href="#" style="display:inline;padding:0px;font-size:13px;text-transform:capitalize;color:#0876c2;">Santa Monico</a> | <a href="#" style="display:inline;padding:0px;font-size:13px;text-transform:capitalize;color:#0876c2;">Beverly hills</a> | <a href="#" style="display:inline;padding:0px;font-size:13px;text-transform:capitalize;color:#0876c2;">Glendole</a></span></span>
+                          
+                                             <div style="clear:both;"></div>
+                          
+                        </div>    
+                                          </div>
+                                       
+                                       
+                                           <div style="float:left;color:#444444;">
+                                         <div class="boxactive" style="padding:0px;">
+                        <a href="city-time-zone-details.html" style="font-size:16px;padding:0px;">
+                        <div style="text-align:right;padding:0px;font-size:11px;margin-top:-12px;">PST&nbsp;&nbsp;</div>
+                            <span style="font-size:15px;">Los Angeles</span><br><span style="font-size:20px;">5:33 PM</span><br>
+                         <div style="text-align:right;adding:0px;margin-bottom:-14px;">+4&nbsp;&nbsp;</div>
+                        </a>
+                     </div>
+                                               
+                                               
+                  <div class="box1" style="padding:0px;">
+                        <a href="city-time-zone-details.html" style="font-size:16px;padding:0px;">
+                        <div style="text-align:right;padding:0px;font-size:11px;margin-top:-12px;">PST&nbsp;&nbsp;</div>
+                            <span style="font-size:15px;">Los Angeles</span><br><span style="font-size:20px;">5:33 PM</span><br>
+                         <div style="text-align:right;adding:0px;margin-bottom:-14px;">+4&nbsp;&nbsp;</div>
+                        </a>
+                     </div>
+                    <div class="box1" style="padding:0px;">
+                        <a href="city-time-zone-details.html" style="font-size:16px;padding:0px;">
+                        <div style="text-align:right;padding:0px;font-size:11px;margin-top:-12px;">PST&nbsp;&nbsp;</div>
+                            <span style="font-size:15px;">Los Angeles</span><br><span style="font-size:20px;">5:33 PM</span><br>
+                         <div style="text-align:right;adding:0px;margin-bottom:-14px;">+4&nbsp;&nbsp;</div>
+                        </a>
+                     </div>
+                      
+                                                 <div class="box1" style="padding:0px;">
+                        <a href="city-time-zone-details.html" style="font-size:16px;padding:0px;">
+                        <div style="text-align:right;padding:0px;font-size:11px;margin-top:-12px;">PST&nbsp;&nbsp;</div>
+                            <span style="font-size:15px;">Los Angeles</span><br><span style="font-size:20px;">5:33 PM</span><br>
+                         <div style="text-align:right;adding:0px;margin-bottom:-14px;">+4&nbsp;&nbsp;</div>
+                        </a>
+                     </div>
+                                               
+                                             
+                                                <div style="clear:both;height:10px;"></div>
+                                                <div class="box1" style="padding:0px;">
+                        <a href="city-time-zone-details.html" style="font-size:16px;padding:0px;">
+                        <div style="text-align:right;padding:0px;font-size:11px;margin-top:-12px;">PST&nbsp;&nbsp;</div>
+                            <span style="font-size:15px;">Los Angeles</span><br><span style="font-size:20px;">5:33 PM</span><br>
+                         <div style="text-align:right;adding:0px;margin-bottom:-14px;">+4&nbsp;&nbsp;</div>
+                        </a>
+                     </div>
+                                                <div class="box1" style="padding:0px;">
+                        <a href="city-time-zone-details.html" style="font-size:16px;padding:0px;">
+                        <div style="text-align:right;padding:0px;font-size:11px;margin-top:-12px;">PST&nbsp;&nbsp;</div>
+                            <span style="font-size:15px;">Los Angeles</span><br><span style="font-size:20px;">5:33 PM</span><br>
+                         <div style="text-align:right;adding:0px;margin-bottom:-14px;">+4&nbsp;&nbsp;</div>
+                        </a>
+                     </div>
+                                                <div class="box1" style="padding:0px;">
+                        <a href="city-time-zone-details.html" style="font-size:16px;padding:0px;">
+                        <div style="text-align:right;padding:0px;font-size:11px;margin-top:-12px;">PST&nbsp;&nbsp;</div>
+                            <span style="font-size:15px;">Los Angeles</span><br><span style="font-size:20px;">5:33 PM</span><br>
+                         <div style="text-align:right;adding:0px;margin-bottom:-14px;">+4&nbsp;&nbsp;</div>
+                        </a>
+                     </div>
+                                               
+                                                <div class="box1" style="padding:0px;">
+                        <a href="city-time-zone-details.html" style="font-size:16px;padding:0px;">
+                        <div style="text-align:right;padding:0px;font-size:11px;margin-top:-12px;">PST&nbsp;&nbsp;</div>
+                            <span style="font-size:15px;">Los Angeles</span><br><span style="font-size:20px;">5:33 PM</span><br>
+                         <div style="text-align:right;adding:0px;margin-bottom:-14px;">+4&nbsp;&nbsp;</div>
+                        </a>
+                     </div>
+                                         
+                                                <div style="clear:both;height:10px;"></div>
+                                               
+                                              
+                                         <div style="float:right;margin-top:-18px;margin-right:-15px;"><a href="" style="font-size:11px;color:#228bd0;text-transform:capitalize;"><i class="fa fa-cog"></i> Customize</a></div>
+                              
+                                           </div>
+                                       
+<!--
+                                       <div style="float:left;"> <span style="color:#444444;margin:0px;padding:0px;font-size:14px;text-transform:capitalize;text-align:left;margin-left:15px;"> Find current time, weather, sun, moon, ephemeris, eclipses and more  <span style="margin-left:40px;">Suggestions: <a href="#" style="display:inline;padding:0px;font-size:13px;text-transform:capitalize;color:#0876c2;">Hollywood</a> | <a href="#" style="display:inline;padding:0px;font-size:13px;text-transform:capitalize;color:#0876c2;">Santa Monico</a> | <a href="#" style="display:inline;padding:0px;font-size:13px;text-transform:capitalize;color:#0876c2;">Beverly hills</a> | <a href="#" style="display:inline;padding:0px;font-size:13px;text-transform:capitalize;color:#0876c2;">Glendole</a></span></span></div>
+                                         <div style="float:right;margin-top:-18px;margin-right:10px;"><a href="" style="font-size:11px;color:#228bd0;text-transform:capitalize;"><i class="fa fa-cog"></i> Customize</a></div>
+-->
+                                          
+                                             <div style="clear:both;height:0px;"></div>
+                                           </div>
+                                 <!-- #site-navigation -->
+                              </div>
+                           </div>
+                        </div>
+                        <!-- .menu -->
+                     </div>
+                     <!-- .navigation -->
+                  </div>
+                  <!-- .span12 -->
+               </div>
+               <!-- .row-fluid -->
+            </div>
+            <!-- .container -->
+         </div>
+         <!-- mainmenu-block-bg -->
+         <!-- END MAIN MENU -->
+         </div>
+      </header>
+      <!-- #header -->
+     <div style="clear:both;height:20px;background-color:#ffffff;"></div>
+      <div id="page" class="hfeed site wrap" style="background-color:#f3f3f3">
+         <div style="height:20px;"></div>
+         <div id="content1" class="site-content" style="margin-top:30px;border:0px solid #f00;">
+            <div id="primary1" class="content-area" style="border:0px solid #f00;">
+               <main id="main1" class="site-main single-page" role="main1" style="border:0px solid #f00;">
+                  <div class="post-modules" style="margin-bottom:0px;">
+                     <div style="height:0px;clear:both;"></div>
+                     <!-- First Box Data-->
+                     <article class="post type-post status-publish format-standard has-post-thumbnail hentry post-module post-module-3cols vertical zoomIn wow post" style="float:left;" >
+                        <div class="current-date-time-bg">
+                           <div style="height:20px;"></div>
+                           <div style="color:#444444;font-size:20px;" align="center"> <i class="fa fa-calendar" style="color:#0876c2;"></i>&nbsp;</span> Current Date and Time</div>
+                           <div style="border-bottom:1px solid #e2e2e2;margin-top:10px;"></div>
+                           <div style="height:5px;"></div>
+                           <span style="margin-top:10px;float:left;margin-left:30px;margin-top:30px;">
+                              <div align="center" style="text-align:left;">
+                                 Tuesday, Nov 17, 2015
+                              </div>
+                              <div style="height:0px;clear:both;"></div>
+                              <div align="left" style="text-align:left;">
+                                 Los Angels, CA USA
+                              </div>
+                              <div style="height:3px;clear:both;"></div>
+                              <a href="" style="margin-left:0px;color:#0876c2;">set default location <i class="fa fa-arrow-circle-right" style="font-size:12px;"></i></a>
+                              <div style="height:10px;clear:both;"></div>
+                              <span>Unix Time</span>  
+                              <span>123786</span>
+                              <div style="clear:both;"></div>
+                              <span>Unix Time</span>  
+                              <span>123786</span>
+                           </span>
+                           <span style="margin-top:0px;vertical-align:-20px;float:left;margin-left:20px;padding-top:20px;"> <img src="{{ url_for('static', filename='images/time-clock1.png') }}"></span>  
+                           <div style="height:0px;clear:both;"></div>
+                           <div style="text-align:left;padding:5px 15px 15px;">Your device clock is 5 second  behind automatic clock. accuracy or synchronisation was +-0.34 seconds. </div>
+                           <div style="height:0px;clear:both;"></div>
+                           <div style="background-color:#f4f4f6;border-top:1px solid #c2c2c2;padding:15px 0px 0px;min-height:80px;">
+                              <a href="" style="margin-left:10px;color:#0876c2;font-size:15px;">World Clock&nbsp;&nbsp;<i class="fa fa-arrow-circle-right" style="font-size:19px;vertical-top:-10px;"></i></a>&nbsp;&nbsp;
+                              <input type="text" style="width:160px;padding:10px;background-color:#fff;margin:0px;border:1px solid #e2e2e2" placeholder="City Here..." class="form-control input-hg day" ><input type="submit" value="GO" style="width:40px;padding:14px 6px 10px;margin:0px;"  >
+                           </div>
+                        </div>
+                     </article>
+                     <!-- End First Box Data-->
+                     <!-- second Box Data-->
+                     <article class="post type-post status-publish format-standard has-post-thumbnail hentry post-module post-module-3cols vertical zoomIn wow post" style="float:left;" >
+                        <div class="time-bg">
+                           <div style="height:20px;"></div>
+                           <div style="color:#444444;font-size:20px;" align="center"><i class="fa fa-clock-o" style="color:#ea8cb6;font-size:20px;"></i> Time Zone</div>
+                           <div style="border-bottom:1px solid #e2e2e2;margin-top:10px;"></div>
+                           <div style="height:5px;"></div>
+                           <span style="margin-left:30px;margin-top:30px;">
+                              <div  style="margin-left:30px;">
+                                 Time Zone for Los Angeles CA USA:
+                              </div>
+                              <div style="height:0px;clear:both;"></div>
+                              <div align="left" style="text-align:left;margin-left:30px;">
+                                 PST (UTC-8) : Since Nov 1,2015<br>PST (UTC-7): from Mar 8, 2016
+                              </div>
+                              <div style="height:3px;clear:both;"></div>
+                              <a href="" style="margin-left:0px;color:#ea8cb6;margin-left:30px;">set default location <i class="fa fa-arrow-circle-right" style="font-size:12px;"></i></a>
+                              <div style="height:10px;clear:both;"></div>
+                              <div  style="margin-left:30px;">
+                                 Zone identifier: America/Los_Angeles
+                              </div>
+                           </span>
+                           <div style="height:5px;clear:both;"></div>
+                           <div style="text-align:left;padding:10px 15px;">Time Zone converter<br>Event / Meeting Planner across time zones<br>Time zone abbrevations </div>
+                           <div style="height:10px;clear:both;"></div>
+                           <div style="background-color:#f4f4f6;border-top:1px solid #c2c2c2;padding:15px 0px 0px;min-height:10px;text-align:center;padding-top:25px;">
+                              <a href="" style="margin-left:10px;color:#ea8cb6;font-size:18px;">Calling Codes&nbsp;&nbsp;<i class="fa fa-arrow-circle-right" style="font-size:19px;vertical-top:-10px;"></i></a>
+                              <div style="height:20px;clear:both;"></div>
+                           </div>
+                        </div>
+                     </article>
+                     <article class="post type-post status-publish format-standard has-post-thumbnail hentry post-module post-module-3cols vertical zoomIn wow post" style="float:left;" >
+                        <div class="planet-bg">
+                           <div style="height:20px;"></div>
+                           <div style="color:#444444;font-size:20px;" align="center"> <i class="fa fa-moon-o" style="color:#fed28d;font-size:20px;"></i> Sun, Moon, Planets</div>
+                           <div style="border-bottom:1px solid #e2e2e2;margin-top:10px;"></div>
+                           <div style="height:5px;"></div>
+                           <span style="margin-top:20px;float:left;margin-left:30px;margin-top:30px;">
+                              <ul style="margin:0px 30px;padding:0px;text-align:left;line-height:26px;list-style-image:url(astro/static/images/sun-bullet.png);">
+                                 <li>Sun Rise : 6:41 AM</li>
+                                 <li>Sun Set : 5:45 PM</li>
+                                 <li>Solar noon : 11:41 AM</li>
+                                 <li>moon rise and set</li>
+                                 <li>Moon Phases</li>
+                                 <li>Mercury, Venus, Mars, Jupiter, Saturn, Uranus <br>Neptune & Pluto rise and set.</li>
+                                 <li>EQuinoxes & Seasons</li>
+                                 <li>Next Solar and lunar Eclipse</li>
+                                 <li>Next Mercury Retrograde</li>
+                              </ul>
+                           </span>
+                           <div style="height:25px;clear:both;"></div>
+                           <div style="height:0px;clear:both;"></div>
+                        </div>
+                     </article>
+                     <!-- end second Box Data-->
+                     <div style="clear:both;height:10px;"></div>
+                     <article class="post type-post status-publish format-standard has-post-thumbnail hentry post-module post-module-3cols vertical zoomIn wow post" style="float:left;" >
+                        <div class="calcul-bg">
+                           <div style="height:20px;"></div>
+                           <div style="color:#444444;font-size:20px;" align="center"> <i class="fa fa-calculator" style="color:#70adfd;font-size:20px;"></i> Calculators and Timers</div>
+                           <div style="border-bottom:1px solid #e2e2e2;margin-top:10px;"></div>
+                           <div style="height:5px;"></div>
+                           <!--                              <span style="margin-top:30px;vertical-align:-20px;float:left;margin-left:20px;padding-top:20px;width:20%;">  <i  class="fa fa-calculator" style="font-size:70px;color:#0668a7;"></i></span>  -->
+                           <span style="margin-top:20px;float:left;margin-left:10px;margin-top:30px;">
+                              <ul style="margin:0px 30px;padding:0px;text-align:left;">
+                                 <li>Date to date calculator</li>
+                                 <li>Next Business week start - end</li>
+                                 <li>Next Business month start - end</li>
+                                 <li>Date to date calculator</li>
+                                 <li>Next Business week start - end</li>
+                                 <li>Next Business month start - end</li>
+                                 <li>Date to date calculator</li>
+                              </ul>
+                           </span>
+                           <div style="height:25px;clear:both;"></div>
+                           <div style="height:0px;clear:both;"></div>
+                        </div>
+                     </article>
+                     <article class="post type-post status-publish format-standard has-post-thumbnail hentry post-module post-module-3cols vertical zoomIn wow post" style="float:left;" >
+                        <div style="text-align:left;font-weight:normal;border:1px solid #e2e2e2;font-family: Karla,sans-serif !important;background-color:#ffffff;width:100%;margin:0px auto;border-radius:5px;overflow:auto;font-size:13px !important;line-height:22px;min-height:410px">
+                           <div style="height:20px;"></div>
+                           <div style="color:#444444;font-size:20px;" align="center"> <i class="fa fa-sun-o" style="color:#fd7d7d;font-size:20px;"></i> Ephemeris for today PST</div>
+                           <div style="border-bottom:1px solid #e2e2e2;margin-top:10px;"></div>
+                           <div>
+                              <table cellpadding="0" cellspacing="0" border="0" align="center" style="border:0px solid;border:0px solid #cccccc" width="100%">
+                                 <tr bgcolor="#cccccc">
+                                    <td >Planet</td>
+                                    <td >Deg</td>
+                                    <td>Sign</td>
+                                 </tr>
+                                 <tr><td  style="border:0px solid;">
+                                 {% set index = 0 %}
+                                 {% set indexss = 5 %}
+                                 {% set indexs = 1 %}
+                                 {% set count = 1 %}
+                                  {% for res in rez %}
+                                  {% if indexss%6 ==0 %}
+                                        </td><td  style="border:0px solid;">{% endif%}
+                                        {% if indexs%6 ==0 %}
+                                        </td><td  style="border:0px solid;">{% endif%}
+                                      {% if index % 6 == 0 %}
+                                      </td></tr>
+                                      {% if count%2 ==0 %}
+                                      <tr bgcolor="#eeeeee">
+                                      {% set count = count  + 1 %}
+                                      {% else %}
+                                      <tr>
+                                      {% set count = count  + 1 %}
+                                      {% endif %}
+                                      <td  style="border:0px solid;">
+                                      {{ res}}
+                                      {% else %}
+                                      {{ res}}
+                                      {% endif %}
+
+                                  {% set index = index  + 1 %}
+                                  {% set indexs = indexs  + 1 %}
+                                  {% set indexss = indexss  + 1 %}
+
+                                  {% endfor %}</td></tr>
+                                 <!--<tr>
+                                    <td  style="border:0px solid;">Sun</td>
+                                    <td  style="border:0px solid;">22 22 22</td>
+                                    <td  style="border:0px solid;">Ari</td>
+                                 </tr>
+                                 <tr bgcolor="#eeeeee">
+                                    <td  style="border:0px solid;">Moon</td>
+                                    <td  style="border:0px solid;">22 22 22</td>
+                                    <td  style="border:0px solid;">Ari</td>
+                                 </tr>
+                                 <tr>
+                                    <td  style="border:0px solid;">Mercury</td>
+                                    <td  style="border:0px solid;">22 22 22</td>
+                                    <td  style="border:0px solid;">Ari</td>
+                                 </tr>
+                                 <tr bgcolor="#eeeeee">
+                                    <td  style="border:0px solid;">Venus</td>
+                                    <td  style="border:0px solid;">22 22 22</td>
+                                    <td  style="border:0px solid;">Ari</td>
+                                 </tr>
+                                 <tr>
+                                    <td  style="border:0px solid;">Mars</td>
+                                    <td  style="border:0px solid;">22 22 22</td>
+                                    <td  style="border:0px solid;">Ari</td>
+                                 </tr>
+                                 <tr bgcolor="#eeeeee">
+                                    <td  style="border:0px solid;">Jupiter</td>
+                                    <td  style="border:0px solid;">22 22 22</td>
+                                    <td  style="border:0px solid;">Ari</td>
+                                 </tr>
+                                 <tr>
+                                    <td  style="border:0px solid;">Saturn</td>
+                                    <td  style="border:0px solid;">22 22 22</td>
+                                    <td  style="border:0px solid;">Ari</td>
+                                 </tr>
+                                 <tr bgcolor="#eeeeee">
+                                    <td  style="border:0px solid;">Uranus</td>
+                                    <td  style="border:0px solid;">22 22 22</td>
+                                    <td  style="border:0px solid;">Ari</td>
+                                 </tr>-->
+                              </table>
+                           </div>
+                           </span>
+                           <div style="height:10px;clear:both;"></div>
+                           <div style="background-color:#f4f4f6;border-top:1px solid #c2c2c2;padding:5px 20px 0px;min-height:80px;">
+                              Transits for today<br>
+                              Planetary Hours for Los Angeles, CA USA<br>
+                              Planet in Signs<br>
+                              Planet stations and retrogrades<br>
+                           </div>
+                           <div style="height:5px;clear:both;background-color:#f2f2f2;"></div>
+                        </div>
+                     </article>
+                     <article class="post type-post status-publish format-standard has-post-thumbnail hentry post-module post-module-3cols vertical zoomIn wow post" style="float:left;" >
+                        <div class="news-bg">
+                           <div style="height:20px;"></div>
+                           <div style="color:#444444;font-size:20px;" align="center"> <i class="fa fa-newspaper-o" style="color:#95c37a;font-size:20px;"></i>  News</div>
+                           <div style="border-bottom:1px solid #e2e2e2;margin-top:10px;"></div>
+                           <div style="height:5px;"></div>
+                           <span style="margin-top:20px;float:left;margin-left:30px;margin-top:30px;text-align:left">
+                           Upcoming Time zone changes<br>
+                           Turkey delays Time change due to Elections <br>2016 Time zone transitions
+                           </span>
+                           <div style="height:25px;clear:both;"></div>
+                           <div style="height:0px;clear:both;"></div>
+                        </div>
+                     </article>
+                  </div>
+               </main>
+            </div>
+            <!--primary Data--> 
+            <!-- end primary Data--> 
+            <!-- end secondary Data--> 
+         </div>
+         <div style="height:30px;clear:both;"></div>
+         <footer id="colophon" class="site-footer noprint" role="contentinfo" itemscope="itemscope" style="padding:5px;">
+            <div style="float:left;font-size:11px;font-weight:bold;"> &COPY; My Astro</div>
+            <div style="float:right;font-size:11px;font-weight:bold;"> <a href="#"> Sitemap </a> | <a href="#">Feedback</a></div>
+         </footer>
+      </div>
+      <!--page-->
+      <script>
+         // Detecting IE
+         (function ($) {
+         "use strict";
+         if ($('html').is('.ie')) {
+         alert('Our site is not compatible with this version of IE. Please upgrade to IE 9 or greater and come back!');
+         }
+         }(jQuery));
+      </script>
+      <script src="{{ url_for('static', filename='includes/viewportchecker.js') }}"></script>
+      <script type="text/javascript">
+         jQuery(document).ready(function() {
+         	jQuery('.post').addClass("hidden").viewportChecker({
+         	    classToAdd: 'visible animated zoomIn', // Class to add to the elements when they are visible
+         	    offset: 100    
+         	   });   
+         });            
+      </script>
+      <script src="{{ url_for('static', filename='includes/wow.min.js') }}"></script>
+      <script>
+         new WOW().init();
+      </script>
+   </body>
+</html>

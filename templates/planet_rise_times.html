@@ -1,0 +1,16 @@
+<html lang="en">
+<head>
+  <title>My Astro</title>
+</head>
+  <body>
+<center><h2>Planet Rise Times</h2></center>
+      {% for key, value in x.iteritems() %}
+            <br><br>{{ key }}<br>
+            {% for key, value in value.iteritems() %}
+            	{{ key }} {{ value }}, 
+            {% endfor %}
+      {% endfor %}
+
+
+  </body>
+</html>

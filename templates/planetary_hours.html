@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+  <title>My Astro</title>
+</head>
+  <body>
+Sunrise: Planetary hours<br><br>
+{% set index = 1 %}
+    <table><tr><td>
+     {% for res in ress %}
+     {{ res}}
+     {% if index%3 ==0 %}
+         </td></tr><tr><td>
+         {% else %}
+          </td><td> 
+        
+         {% endif %}
+
+    {% set index = index  + 1 %}
+    
+
+    {% endfor %}</tr>
+
+</table>
+ 
+
+<br><br>
+Sunset: Planetary hours<br><br>
+{% set indexs = 1 %}
+    <table><tr><td>
+     {% for rest in res %}
+     {{ rest}}
+     {% if indexs%3 ==0 %}
+         </td></tr><tr><td>
+         {% else %}
+          </td><td> 
+        
+         {% endif %}
+
+    {% set indexs = indexs  + 1 %}
+    
+
+    {% endfor %}</tr>
+
+</table>
+
+
+  </body>
+</html>

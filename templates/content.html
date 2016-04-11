@@ -1,0 +1,19 @@
+<html lang="en">
+<head>
+  <title>My Astro</title>
+</head>
+  <body>
+<center><h2>List of Contents</h2></center>
+<br><br>
+<ul>
+<li><a href="{{ url_for('hours') }}">Planetary hours</a></li>
+<li><a href="{{ url_for('home') }}">Ephemeris Today</a></li>
+<li><a href="{{ url_for('eclipse')}}">Solar Eclipse</a></li>
+<li><a href="{{ url_for('eclipses')}}">Solar Eclipse for current geographical position</a></li>
+<li><a href="{{ url_for('leclipse')}}">Lunar Eclipse</a></li>
+<li><a href="{{ url_for('leclipses')}}">Lunar Eclipse for current geographical position</a></li>
+<li><a href="{{ url_for('risetimes')}}">Planet Rise Times</a></li>
+<li><a href="{{ url_for('moonphases')}}">Moon Phases</a></li>
+</ul>
+</body>
+</html>
