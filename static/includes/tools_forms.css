@@ -1,0 +1,84 @@
+
+.tools-forms {
+  width: 90%;
+  min-width: 340px;
+  max-width: 500px;
+}
+.new_box {
+  padding: 20px 8px 20px 0;
+  font-size: 24px;
+}
+input {
+  width: 100%;
+  margin:0;
+}
+button {
+  margin:0;
+}
+h3 {
+  margin: 0;
+}
+.chart-info, .new_box p {
+  font-size: 14px;
+}
+.tt-dropdown-menu {
+  width: 100% !important;
+}
+.new-tools-menu a {
+  color: #555;
+}
+.month, .day, .hour, .min {
+  width: 77px;
+}
+.year {
+  width: 120px;
+}
+.month, .day, .hour, .min, .year {
+  display: inline-block;
+}
+.form_set {
+  display: inline-block;
+  margin-right: 5px;
+}
+.form_set label {
+  display: block;
+}
+.btn-submit {
+  margin-top: 20px;
+  color: #fff;
+  width: 100%;
+  margin-bottom: 90px;
+}
+.date-group {
+  display: inline-block;
+  vertical-align: top;
+}
+.time-group {
+  display: inline-block;
+  vertical-align: top;
+
+}
+.has-error label {
+  color: #e74c3c;
+}
+#error {
+  color: #e74c3c;
+  width: 100%;
+  font-size: 17px;
+  display: none;
+  font-style: italic;
+}
+.nav-tabs>li>a {
+  font-size: 14px;
+}
+label.radio {
+  display: inline-block;
+
+  margin-left: 10px;
+}
+.person-label {
+  display: block;
+  padding: 10px 0;
+  margin-top: 20px;
+  font-size: 20px;
+}

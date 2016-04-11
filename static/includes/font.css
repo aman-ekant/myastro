@@ -1,0 +1,22 @@
+
+
+@font-face {
+	font-family: "Open Sans1";
+	src: url('fonts/gillsans_light.eot');
+	src: local('☺'), url('fonts/gillsans_light.woff') format('woff'), url('fonts/gillsans_light.ttf') format('truetype'), url('fonts/gillsans_light.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+	font-smooth: always;
+}
+
+@font-face {
+	font-family: "Open Sans";
+	src: url('fonts/GOTHIC.EOT');
+	src: local('☺'), url('fonts/GOTHIC.WOFF') format('WOFF'), url('fonts/GOTHIC.TTF') format('truetype'), url('fonts/GOTHIC.SVG') format('svg');
+	font-weight: normal;
+	font-style: normal;
+	font-smooth: always;
+}
+
+
+

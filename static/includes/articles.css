@@ -1,0 +1,150 @@
+.citysearch{padding:10px; width:330px !important; margin:0px;}
+.subsearch{width:110px; padding:14px 5px !important; margin:0px 0px 0px 4px;}
+.worldati{color:#0876c2; margin:0px;padding:0px; margin-top:5px; margin-right:15px; display:inline !important; font-weight:normal !important;}
+
+
+.cityfont{font-size:10px;}
+.timefont{font-size:12px;}
+.pstfont{float:left; font-size:10px;}
+.numfont{float:right; font-size:10px;}
+
+.olcity{width:100%; text-align:center; padding:0px; margin:0px;}
+.olcity li{display:inline-block; margin-right:10px; margin-bottom:10px; border:1px solid #228bd0; width:130px; cursor:pointer; line-height:13px;}
+
+.olcity li:hover{background:#228bd0; padding:0px; cursor:pointer;}
+.olcity li:hover a{color:#ffffff !important;}
+
+.olcity li a {color:#228bd0 !important; font-weight:normal !important;}
+
+.olcity li.active{background:#79c4f5; padding:0px; color:#ffffff; line-height:13px;}
+.olcity li.active a {color:#ffffff !important;}
+
+.findcurr{color:#444444; margin:0px; padding:0px; font-size:10px; text-transform:capitalize; text-align:left; margin-left:15px;}
+
+.city2{width:40% !important; padding:10px !important; background-color:#fff !important; margin:0px !important; border:1px solid #e2e2e2 !important;}
+.go{width:40px !important; padding:10px 6px 10px !important; margin:0px !important; margin-left: -4px !important; vertical-align: 1px;}
+
+@media (max-width: 768px){
+	.list-articles .post-thumbnail img {
+		width: 440px;
+	}
+}
+@media (min-width: 768px){
+	#primary.single {
+	    margin: 0 -23.4% 0 0;
+	}
+	#secondary.single {
+	    width: 23.4%;
+	}
+	#main.single-page {
+	    margin: 0 30% 0 0;
+	}
+	.post-module-2cols {
+	    width: 48%;
+	}
+	.list-articles .post-thumbnail img {
+		width: 248px;
+	}
+}
+
+.author-date {
+	font-size: 12px;
+}
+.entry-content {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.entry-content a {
+	text-decoration: underline;
+}
+.single-page article header {
+	padding-bottom: 20px;
+	border-bottom: 1px solid #3d3e40;
+}
+.small_text {
+	color: #999;
+	font-size: 12px;
+	font-style: italic;
+	margin-left: 30px;
+	margin-top: 20px;
+}
+.clear {
+	clear: both;
+}
+.page_pag {
+	text-align: center;
+	font-size: 18px;
+}
+.page_pag span {
+	font-size: 25px;
+	vertical-align: top;
+}
+.page_pag a {
+	font-style: italic;
+	color: #AB1559;
+	margin: 0 3px;
+}
+.page_pag a:hover {
+	border-bottom: 2px solid #AB1559;
+}
+
+/* Single Article */
+.ac_inner {
+	margin-top: 20px;
+}
+.ac_inner p {
+	font-size: 15px;
+	text-align: justify;
+}
+.line-image{
+	text-align: center;
+}
+.inline-image {
+	display: inline-block;
+	float: right;
+}
+.inline-image-left {
+	display: inline-block;
+	float: right;
+}
+.inline-image div, .inline-image-left div, .line-image div {
+	font-size: 12px;
+	font-style: italic;
+	text-align: center;
+}
+.image-credit {
+	font-size: 10px;
+	color: #555;
+}
+.chart-link {
+	color: #E24289 !important;	
+}
+.planets-box {
+	display: inline-block;
+	min-width: 270px;
+	vertical-align: middle;
+	padding-left: 20px;
+	font-size: 19px;
+}
+.person_img {
+	display: inline-block;
+	vertical-align: middle;
+}
+.short-description p {
+	margin-bottom: 10px;
+}
+.main-photo {
+	margin-top: 20px;
+	margin-bottom: 0px;
+}
+.image_credit_link, .bt_credit_link {
+	font-size: 12px;
+	cursor: pointer;
+}
+.image_credit, .bt_credit {
+	display: none;
+	font-size: 12px;
+	background-color: #ccc;
+	padding: 2px;
+	word-wrap: break-word;
+}
