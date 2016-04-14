@@ -6,19 +6,26 @@
 <center><h2>Moon Phases</h2></center>
 		{% set i = 0 %}
 		<table>
-		<th style = "width:250;">New Moon</th>			
-		<th style = "width:250;">First Quater</th>
-		<th style = "width:250;">FullMoon</th>
-		<th style = "width:250;">Third Quater</th>			
-      {% for value in rez %}
-            <tr>
-            <td>{{rez[i][0]}} </td>
-            <td>{{rez[i][1]}} </td>
-            <td>{{rez[i][2]}} </td>
-            <td>{{rez[i][3]}} </td>
-            </tr>
-            {% set i = i+1 %}
+    <tr>
+		<th style = "width:250;">Full Moon</th>			
+		<th style = "width:250;">Third Quater</th>
+		<th style = "width:250;">First Moon</th>
+		<th style = "width:250;">New Quater</th>	</tr>
+<tr>
+      {% for key, value in rez.iteritems() %}
+            
+            {% for key, value in value.iteritems() %}
+               <td> {{ value }}</td>
+            
+          {% set i = i+1 %}
+          {% if i%4==0 %}
+          </tr><tr>
+          {% endif %}
+          {% endfor %}
       {% endfor %}
+      </tr>
+            
+      
       	</table>
 
   </body>

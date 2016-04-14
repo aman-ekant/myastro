@@ -334,7 +334,29 @@
                                     <td >Deg</td>
                                     <td>Sign</td>
                                  </tr>
-                                 <tr><td  style="border:0px solid;">
+                                  {% set i = 0 %}
+                                  {% set count = 1 %}
+                                   <tr>
+                                    {% for key, value in rez.iteritems() %}
+                                      {% for key, value in value.iteritems() %}
+                                          <td  style="border:0px solid;"> {{ value }}</td>
+                                              {% set i = i+1 %}
+                                                {% if i%3==0 %}
+                                                  {% if count%2 ==0 %}
+                                                    </tr><tr>
+                                                  {% else %}
+                                                    </tr><tr bgcolor="#eeeeee">
+                                                  {% endif %}
+                                                  
+                                                {% endif %}
+                                      {% endfor %}
+                                      {% set count = count + 1 %}
+                                    {% endfor %}
+                                  </tr>
+
+
+
+                                <!-- <tr><td  style="border:0px solid;">
                                  {% set index = 0 %}
                                  {% set indexss = 5 %}
                                  {% set indexs = 1 %}
@@ -363,7 +385,7 @@
                                   {% set indexs = indexs  + 1 %}
                                   {% set indexss = indexss  + 1 %}
 
-                                  {% endfor %}</td></tr>
+                                  {% endfor %}</td></tr>-->
                                  <!--<tr>
                                     <td  style="border:0px solid;">Sun</td>
                                     <td  style="border:0px solid;">22 22 22</td>
