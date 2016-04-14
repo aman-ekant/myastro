@@ -21,6 +21,7 @@ import planet_rise_times
 import ip2location_lookup
 import ephemeris_today
 import moon_phases
+import externalapis
 
 
 con = sqlite3.connect('city', check_same_thread=False)
@@ -54,7 +55,54 @@ month = nows.month
 day = nows.day
 start_time = datetime.datetime.utcnow()
 time_zone = TimezoneID
+print nows
 
+#Moon Phases API
+rezultsz = moon_phases.phases(year)
+@application.route('/moonphases_api/', methods=['GET'])
+def get_moonphasesx():
+    #return jsonify({'moonphases': rezultsz})
+    return jsonify({'moonphases': 'No Data Found',
+                    'error': 'missing parameter'})
+
+
+
+
+@application.route('/moonphases_api/<int:year>', methods=['GET'])
+def moonphasessx(year):
+    rezultszz = moon_phases.phases(year)
+    return jsonify({'moonphases': rezultszz})
+
+#Moon Phases API
+
+#Planet Hours API
+rezults, rezultss = ephemeris_today.plan_hours(TimezoneID, location_longitude, location_latitude)
+@application.route('/hours_api/')
+def hoursx():
+    #return jsonify({'Sunset Planetary Hours' : rezults,'Sunrise Planetary Hours' : rezultss})
+    return jsonify({'Planetary Hours': 'No Data Found',
+                    'error': 'missing parameters'})
+
+@application.route('/hours_api/<Timezonez>/<lon>/<lat>', methods=['GET'])
+def hoursz(Timezonez, lon, lat):
+    rezults, rezultss = ephemeris_today.plan_hours(float(Timezonez), float(lon), float(lat)) 
+    return jsonify({'Sunset Planetary Hours' : rezults,'Sunrise Planetary Hours' : rezultss})
+    
+        
+
+@application.route('/hours_api/<Timezonez>/<lon>/')
+def hourrs(Timezonez, lon):
+    return jsonify({'Planetary Hours': 'No Data Found',
+                'error': '1 missing parameter'})
+
+
+@application.route('/hours_api/<Timezonez>/')
+def housrs(Timezonez):
+    return jsonify({'Planetary Hours': 'No Data Found',
+                'error': '2 missing parameters'})
+
+
+#Planet Hours API
 
 @application.route('/')
 def home():
@@ -71,6 +119,12 @@ def risetimes():
 def hours():
     rezults, rezultss = ephemeris_today.plan_hours(TimezoneID, location_longitude, location_latitude)
     return render_template('planetary_hours.html', res=rezults, ress=rezultss)
+
+
+@application.route('/moonphases/<int:year>')
+def moonphasess(year):
+    rezults = moon_phases.phases(year)
+    return render_template('moon_phases.html', rez=rezults)
 
 @application.route('/moonphases/')
 def moonphases():
