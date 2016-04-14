@@ -22,13 +22,13 @@ def ephe_today(TimezoneID, start_time):
     birth_date = start_time
     time_birth_hour = start_time.hour  # 24 hour format
     time_birth_min = start_time.minute  # 24 hour format
-    print TimezoneID
+    #print TimezoneID
     is_birth_time = False
     x, y = np.array(birthchart.ephemeris_calc(float(TimezoneID),birth_date, time_birth_hour, time_birth_min))
 
     signs = birthchart.natal_planet_signs(x)
     #print signs
-    rezult = []
+    rezult = {}
     for i in range(len(x)):
         planet_deg = int(x[i])
         p_min = x[i] - planet_deg
@@ -36,11 +36,11 @@ def ephe_today(TimezoneID, start_time):
         p_sec = p_min - (planet_min / 60.)
         planet_sec = int(p_sec * 3500)
         speed = ''
+        planet = constants.PLANET_CHARS[i]
         if y[i] < 0:
             speed = 'R'
-        rezult += constants.PLANET_CHARS[i], str(planet_deg) , str(planet_min) , str(planet_sec) , str(speed) , constants.SIGN_ZODIAC[signs[i]]
-
-    return rezult
+        rezult[planet] = {'planet' : planet, 'planet_deg' : str(planet_deg) +' '+ str(planet_min) +' '+ str(planet_sec) +' '+ str(speed) , 'sign' : constants.SIGN_ZODIAC[signs[i]]}
+    return (rezult)
 
 
     xx = birthchart.natal_aspects(x, .1)
@@ -89,19 +89,19 @@ def plan_hours(time_zone, location_longitude, location_latitude):
     print 'Day:',start_sequence#, planetary_hour_sequence[day_sequence_p[day_of_week]]
     j = day_sequence_p[day_of_week]
     #print 'Sunrise: Planetary hours'
-    rezultss = []
+    rezultss = {}
     for i in range(12):
         if j > 6:
             j = 0
-        rezultss+= sun_rise.strftime('%m-%d-%Y: %H:%M'), (sun_rise + day_diff / 12).strftime('%m-%d-%Y: %H:%M'), planetary_hour_sequence[j]
+        rezultss[i] = {'time' : str(sun_rise.strftime('%m-%d-%Y: %H:%M')), 'time2' : str((sun_rise + day_diff / 12).strftime('%m-%d-%Y: %H:%M')), 'planet' : str(planetary_hour_sequence[j])}
         sun_rise += day_diff / 12
         j += 1
     #print 'Sunset : Planetary hours'
-    rezults = []
+    rezults = {}
     for i in range(12):
         if j > 6:
             j = 0
-        rezults+= sun_set.strftime('%m-%d-%Y: %H:%M'), (sun_set + night_diff / 12).strftime('%m-%d-%Y: %H:%M'), planetary_hour_sequence[j]
+        rezults[i]= {'time' : str(sun_set.strftime('%m-%d-%Y: %H:%M')), 'time2' : str((sun_set + night_diff / 12).strftime('%m-%d-%Y: %H:%M')), 'planet' : str(planetary_hour_sequence[j])}
         sun_set += night_diff / 12
         j += 1
     return rezults, rezultss

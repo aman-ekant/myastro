@@ -9,12 +9,12 @@ import time
 def planet_rise():
 	sitka = ephem.Observer()
 	# sitka.date = '2015/6/18'
-	sitka.lat = '34:1'
-	sitka.long = '-118:15'
+	sitka.lat = '22.5'
+	sitka.long = '77.5'
 	m = ephem.Sun()
 	sitka.pressure = 0
 	sitka.horizon = '-18'
-	time_zone = -7
+	time_zone = 5.5
 	planet = {}
 	print 'Rise/ hign noon/set times for:', sitka.lat, sitka.long
 	print 'Rise -Twilight ', ephem.date(sitka.next_rising(m) + time_zone * ephem.hour)
@@ -207,7 +207,7 @@ def planet_rise():
 	sitka.long = '-118:15'
 	m = ephem.Jupiter()
 	print 'Rise/ hign noon/set times for:', sitka.lat, sitka.long
-	print 'Rise   ', ephem.date(sitka.next_rising(m) + time_zone * ephem.hour)
+	Rise = str(ephem.date(sitka.next_rising(m) + time_zone * ephem.hour))
 	sitka.date = ephem.date(sitka.next_rising(m))
 	m = ephem.Jupiter(sitka)
 	print 'azimuth', m.az
@@ -217,24 +217,24 @@ def planet_rise():
 	m = ephem.Jupiter(sitka)
 	print 'azimuth', m.alt, m.phase, '% phase'
 
-	print 'Set    ', ephem.date(sitka.next_setting(m) + time_zone * ephem.hour)
+	Set = str(ephem.date(sitka.next_setting(m) + time_zone * ephem.hour))
 	sitka.date = ephem.date(sitka.next_setting(m))
 	m = ephem.Jupiter(sitka)
-	print 'azimuth', m.az
-	print '--------------------------------'
-	print 'Jupiter - Now'
+	azimuth = m.az
+	#print '--------------------------------'
+	#print 'Jupiter - Now'
 	sitka = ephem.Observer()
 	#sitka.date = '2015/10/19 4:21:54'
 	sitka.lat = '34:03'
 	sitka.long = '-118:15'
 	v = ephem.Jupiter(sitka)
-	Altitude = v.alt
-	Direction = v.az
+	Altitude = str(v.alt)
+	Direction = str(v.az)
 	m = ephem.Jupiter()
 	m.compute()
-	Phase = m.phase
-	Distance = (m.earth_distance * ephem.meters_per_au / 1600)
-	planet['Jupiter'] = {'Phase':Phase, 'Distance':Distance, 'Altitude':Altitude, 'Direction':Direction}
+	Phase = str(m.phase)
+	Distance = str(m.earth_distance * ephem.meters_per_au / 1600)
+	planet['Jupiter'] = {'Azimuth' :azimuth, 'Rise' :Rise, 'Set' :Set, 'Phase':Phase, 'Distance':Distance, 'Altitude':Altitude, 'Direction':Direction}
 	print '--------------------------------'
 	print 'Saturn'
 	print '--------------------------------'
