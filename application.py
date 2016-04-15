@@ -136,9 +136,89 @@ def get_homec(Timezonezs, time):
 
 
 ##########################################################################################################################
+#################################################solar_eclipse API######################################################
+
+@application.route('/solareclipse_api/')
+def get_solarz():
+    #return jsonify({'ephemeris': rezult})
+    return jsonify({'Solar Eclipse': 'No Data Found',
+                    'error': 'missing parameters'})
+
+@application.route('/solareclipse_api/<Timezonezs>/')
+def get_solarx(Timezonezs):
+    result = eclipse_solar.solar(float(Timezonezs), year, month, day, location_latitude, location_longitude)
+    return jsonify({'Solar Eclipse': result})
+
+@application.route('/solareclipse_api/<Timezonezs>/<years>/')
+def get_solarc(Timezonezs, years):
+    result = eclipse_solar.solar(float(Timezonezs), int(years), month, day, location_latitude, location_longitude)
+    return jsonify({'Solar Eclipse': result})
+    
+@application.route('/solareclipse_api/<Timezonezs>/<years>/<months>/')
+def get_solarv(Timezonezs, years, months):
+    result = eclipse_solar.solar(float(Timezonezs), int(years), int(months), day, location_latitude, location_longitude)
+    return jsonify({'Solar Eclipse': result})
+
+@application.route('/solareclipse_api/<Timezonezs>/<years>/<months>/<days>/')
+def get_solarb(Timezonezs, years, months, days):
+    result = eclipse_solar.solar(float(Timezonezs), int(years), int(months), int(days), location_latitude, location_longitude)
+    return jsonify({'Solar Eclipse': result})
+
+@application.route('/solareclipse_api/<Timezonezs>/<years>/<months>/<days>/<latt>/')
+def get_solarn(Timezonezs, years, months, days, latt):
+    return jsonify({'Solar Eclipse': 'No Data Found',
+                    'error': '1 missing parameter'})
+
+@application.route('/solareclipse_api/<Timezonezs>/<years>/<months>/<days>/<latt>/<longg>/')
+def get_solarm(Timezonezs, years, months, days, latt, longg):
+    result = eclipse_solar.solarbypos(float(Timezonezs), int(years), int(months), int(days), float(latt), float(longg))
+    return jsonify({'Solar Eclipse': result})
+
+##########################################################################################################################
+#################################################lunar_eclipse API######################################################
+
+@application.route('/lunareclipse_api/')
+def get_lunarz():
+    #return jsonify({'ephemeris': rezult})
+    return jsonify({'Lunar Eclipse': 'No Data Found',
+                    'error': 'missing parameters'})
+
+@application.route('/lunareclipse_api/<Timezonezs>/')
+def get_lunarx(Timezonezs):
+    result = eclipses_lunar.lunar(float(Timezonezs), year, month, day, location_latitude, location_longitude)
+    return jsonify({'Lunar Eclipse': result})
+
+@application.route('/lunareclipse_api/<Timezonezs>/<years>/')
+def get_lunarc(Timezonezs, years):
+    result = eclipses_lunar.lunar(float(Timezonezs), int(years), month, day, location_latitude, location_longitude)
+    return jsonify({'Lunar Eclipse': result})
+    
+@application.route('/lunareclipse_api/<Timezonezs>/<years>/<months>/')
+def get_lunarv(Timezonezs, years, months):
+    result = eclipses_lunar.lunar(float(Timezonezs), int(years), int(months), day, location_latitude, location_longitude)
+    return jsonify({'Lunar Eclipse': result})
+
+@application.route('/lunareclipse_api/<Timezonezs>/<years>/<months>/<days>/')
+def get_lunarb(Timezonezs, years, months, days):
+    result = eclipses_lunar.lunar(float(Timezonezs), int(years), int(months), int(days), location_latitude, location_longitude)
+    return jsonify({'Lunar Eclipse': result})
+
+@application.route('/lunareclipse_api/<Timezonezs>/<years>/<months>/<days>/<latt>/')
+def get_lunarn(Timezonezs, years, months, days, latt):
+    return jsonify({'Lunar Eclipse': 'No Data Found',
+                    'error': '1 missing parameter'})
+
+@application.route('/lunareclipse_api/<Timezonezs>/<years>/<months>/<days>/<latt>/<longg>/')
+def get_lunarm(Timezonezs, years, months, days, latt, longg):
+    result = eclipses_lunar.lunarbypos(float(Timezonezs), int(years), int(months), int(days), float(latt), float(longg))
+    return jsonify({'Lunar Eclipse': result})
+
+
+
+##########################################################################################################################
 ###################################################Today's Ephemeris######################################################
 
-@application.route('/')
+@application.route('/home/')
 def home():
     rezult  = ephemeris_today.ephe_today(TimezoneID, start_time)
 #ephemeris_today
@@ -179,14 +259,14 @@ def moonphases():
 
 @application.route('/eclipse/')
 def eclipse():
-    result = eclipse_solar.solar(year, month, day, time_zone, location_latitude, location_longitude)
+    result = eclipse_solar.solar(time_zone, year, month, day, location_latitude, location_longitude)
     return render_template('solareclipse.html', rez=result) 
        
     
 
 @application.route('/eclipses/')
 def eclipses():
-    result = eclipse_solar.solarbypos(year, month, day, time_zone, location_latitude, location_longitude)
+    result = eclipse_solar.solarbypos(time_zone, year, month, day, location_latitude, location_longitude)
     return render_template('solareclipsebyposition.html', rez=result) 
 
 ##############################################################################################################################
@@ -194,19 +274,19 @@ def eclipses():
 
 @application.route('/leclipse/')
 def leclipse():
-    result = eclipses_lunar.lunar(year, month, day, time_zone, location_latitude, location_longitude)
+    result = eclipses_lunar.lunar(time_zone, year, month, day, location_latitude, location_longitude)
     return render_template('lunareclipse.html', rez=result) 
     
     
 
 @application.route('/leclipses/')
 def leclipses():
-    result = eclipses_lunar.lunarbypos(year, month, day, time_zone, location_latitude, location_longitude)
+    result = eclipses_lunar.lunarbypos(time_zone, year, month, day, location_latitude, location_longitude)
     return render_template('lunareclipsebyposition.html', rez=result) 
 
 ##############################################################################################################################
 
-@application.route('/content/')
+@application.route('/')
 def content():
     return render_template('content.html')
 

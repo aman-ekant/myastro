@@ -19,7 +19,7 @@ def date_convert(jul_number):
     sub_sec, sec = math.modf(sec_temp * 60)
     return datetime.datetime(year, month, day, int(hour), int(min), int(sec))
 
-def solar(year, month, day, time_zone, location_latitude, location_longitude):
+def solar(time_zone, year, month, day, location_latitude, location_longitude):
     solaar = {}
     now = swe.julday(year, month, day)
     for i in range(1):
@@ -150,14 +150,14 @@ def solar(year, month, day, time_zone, location_latitude, location_longitude):
     solar_eclipse = {'ecl_central_or_not' : ecl_central_or_not, 'soros_cycle' : soros_cycle,
                             'soros_number' : soros_number, 'max_covered' : max_covered, 'sun_alt' : sun_alt, 'sun_azm' : sun_azm,
                             'sun_pos' : sun_pos, 'sun_zodiac' : sun_zodiac, 'moon_pos' : moon_pos, 'moon_zodiac' : moon_zodiac,
-                            'latii' : latitude, 'longii' : longitude, 'magnii' : magnii, 'start' : start, 'start_totality' : start_totality,
-                            'centerline_start' : centerline_start, 'max' : maxi, 'centerline_end' : centerline_end,
-                            'end_totality' : end_totality, 'end' : end, 'duration' : duration, 'Type' : Type}
+                            'latii' : latitude, 'longii' : longitude, 'magnii' : magnii, 'start' : str(start), 'start_totality' : start_totality,
+                            'centerline_start' : str(centerline_start), 'max' : str(maxi), 'centerline_end' : str(centerline_end),
+                            'end_totality' : str(end_totality), 'end' : str(end), 'duration' : str(duration), 'Type' : Type}
 
     return solar_eclipse
 
     
-def solarbypos(year, month, day, time_zone, location_latitude, location_longitude):    # print i
+def solarbypos(time_zone, year, month, day, location_latitude, location_longitude):    # print i
     now = swe.julday(year, month, day)
     res_global = swe.sol_eclipse_when_glob(now)
     now = res_global[1][0] - 1
@@ -249,6 +249,6 @@ def solarbypos(year, month, day, time_zone, location_latitude, location_longitud
     solar_eclipse_bypos = {'ecl_central_or_not' : ecl_central_or_not, 'soros_cycle' : soros_cycle,
                             'soros_number' : soros_number, 'max_covered' : max_covered, 'sun_alt' : sun_alt, 'sun_azm' : sun_azm,
                             'sun_pos' : sun_pos, 'sun_zodiac' : sun_zodiac, 'moon_pos' : moon_pos, 'moon_zodiac' : moon_zodiac, 
-                            'start' : start, 'max' : maxi, 'end' : end, 'Type' : Type}
+                            'start' : str(start), 'max' : str(maxi), 'end' : str(end), 'Type' : Type}
 
     return solar_eclipse_bypos

@@ -20,7 +20,7 @@ def date_convert(jul_number):
     return datetime.datetime(year, month, day, int(hour), int(min), int(sec))
 
 
-def lunar(year, month, day, time_zone, location_latitude, location_longitude):
+def lunar(time_zone, year, month, day, location_latitude, location_longitude):
     # ###lunar eclipses
     lunar_eclipse = {}
     now = swe.julday(year, month, day)
@@ -98,13 +98,14 @@ def lunar(year, month, day, time_zone, location_latitude, location_longitude):
 
     lunar_eclipse = {'ecl_central_or_not' : ecl_central_or_not, 'soros_cycle' : soros_cycle,
                             'sun_pos' : sun_pos, 'sun_zodiac' : sun_zodiac, 'moon_pos' : moon_pos, 'moon_zodiac' : moon_zodiac,
-                            'start' : start, 'max' : maxi, 'soros_number' : soros_number, 'magnitude_umbral' : magnitude_umbral,
-                            'end' : end, 'Type' : Type, 'magnitude_penumbral' : magnitude_penumbral, 'duration_umbral' : duration_umbral,
-                            'duration_penumbral' : duration_penumbral}
+                            'start' : str(start), 'max' : str(maxi), 'soros_number' : soros_number, 'magnitude_umbral' : magnitude_umbral,
+                            'end' : str(end), 'Type' : Type, 'magnitude_penumbral' : magnitude_penumbral, 'duration_umbral' : str(duration_umbral),
+                            'duration_penumbral' : str(duration_penumbral)}
     return lunar_eclipse
 
 
-def lunarbypos(year, month, day, time_zone, location_latitude, location_longitude):
+def lunarbypos(time_zone, year, month, day, location_latitude, location_longitude):
+    end='';
     lunar_eclipse = {}
     now = swe.julday(year, month, day)
     res = swe.lun_eclipse_when_loc(now, location_longitude, location_latitude)
@@ -247,11 +248,11 @@ def lunarbypos(year, month, day, time_zone, location_latitude, location_longitud
     soros_number = int(res_how[1][10])
     magnitude_umbral = res_how[1][0]
     magnitude_penumbral = res_how[1][1]
-    lunar_eclipse = {'soros_cycle' : soros_cycle, 'moon_rise' : Moon_rise, 'moon_set' : Moon_set,
+    lunar_eclipse = {'soros_cycle' : soros_cycle, 'moon_rise' : str(Moon_rise), 'moon_set' : str(Moon_set),
                             'sun_pos' : sun_pos, 'sun_zodiac' : sun_zodiac, 'moon_pos' : moon_pos, 'moon_zodiac' : moon_zodiac,
-                            'start' : start, 'max' : maxi, 'soros_number' : soros_number, 'magnitude_umbral' : magnitude_umbral,
-                            'end' : end, 'Type' : Type, 'magnitude_penumbral' : magnitude_penumbral, 'duration_umbral' : duration_umbral,
-                            'duration_penumbral' : duration_penumbral, 'moon_alt' : moon_alt, 'moon_azm' : moon_azm}
+                            'start' : str(start), 'max' : str(maxi), 'soros_number' : soros_number, 'magnitude_umbral' : magnitude_umbral,
+                            'end' : str(end), 'Type' : Type, 'magnitude_penumbral' : magnitude_penumbral, 'duration_umbral' : str(duration_umbral),
+                            'duration_penumbral' : str(duration_penumbral), 'moon_alt' : moon_alt, 'moon_azm' : moon_azm}
 
 
     return lunar_eclipse
