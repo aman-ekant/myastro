@@ -1,0 +1,33 @@
+http://flask-env.xk7mh5pkey.us-west-2.elasticbeanstalk.com/
+
+aws login
+username -> kapilbamba@yahoo.com
+password -> Ghaziabad123!@#
+
+
+BNI
+www.bniconnectglobal.com
+u: savar
+p: Savar42*
+
+
+https://www.youtube.com/watch?v=3xQTJi2tqgk
+
+https://www.bniconnectglobal.com/web/secure/networkHome?userId=20#Profile
+<a href="mailto:jorgemiranda@hotmail.com" class="profileurl">jorgemiranda@hotmail.com</a>
+
+
+>>> import requests
+>>> from bs4 import BeautifulSoup
+>>> r = requests.get("https://www.bniconnectglobal.com/web/secure/networkHome?userId=20#Profile")
+r.content
+>>> soup = BeautifulSoup(r.content, "html.parser")
+>>>print soup.prettify()
+
+
+id=j_username
+name=j_username
+id=j_password
+name=j_password
+
+
