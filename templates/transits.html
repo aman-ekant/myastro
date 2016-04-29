@@ -1,0 +1,23 @@
+<html lang="en">
+  <head>
+    <title>My Astro</title>
+  </head>
+  <body>
+Transits for Today<br><br>
+{% set i = 0 %}
+    <table>
+      <tr>
+        {% for key, value in rez.iteritems() %}
+            {% for key, value in value.iteritems() %}
+               <td> {{ value }}</td>
+                {% set i = i+1 %}
+                {% if i%3==0 %}
+                    </tr><tr>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+      </tr>
+    </table>
+
+  </body>
+</html>
