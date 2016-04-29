@@ -16,9 +16,9 @@ def ipv42loc(ip_addrs):
 
 	rec = IP2LocObj.get_all(ip_addrs)
 	#print rec.country_short
-	#print rec.country_long
+	country = rec.country_long
 	region = rec.region
-	#print rec.city
+	city = rec.city
 	latitude = rec.latitude
 	longitude = rec.longitude
 	#print rec.zipcode
@@ -32,13 +32,13 @@ def ipv42loc(ip_addrs):
 	else:
 		region_override = rec.region
 		country_overide = rec.country_short
-	#print regions_good.ix[region_override + country_overide]['pytzname']
-	timezone = (regions_good.ix[region_override + country_overide]['timezone'])
+	timezone = (regions_good.ix[region_override + country_overide]['pytzname'])
+	timezoneid = (regions_good.ix[region_override + country_overide]['timezone'])
 	#print regions_good.ix[region_override + country_overide]['dst']
 	#print regions_good.ix[region_override + country_overide]['std_abv']
 	#print regions_good.ix[region_override + country_overide]['dst_abv']
 
-	return latitude, longitude, timezone, region
+	return latitude, longitude, timezoneid, region, city, country, timezone
 
 
 #print 'BIN transit time: ', time.clock() - starttime
@@ -55,9 +55,9 @@ def ipv62loc(ip_addrs):
 
 	#print ip_add
 	#print rec.country_short
-	#print rec.country_long
+	country = rec.country_long
 	region = rec.region
-	#print rec.city
+	city = rec.city
 	latitude = rec.latitude
 	longitude = rec.longitude
 	#print rec.zipcode
@@ -71,10 +71,10 @@ def ipv62loc(ip_addrs):
 	else:
 		region_override = rec.region
 		country_overide = rec.country_short
-	#print regions_good.ix[region_override + country_overide]['pytzname']
-	timezone = (regions_good.ix[region_override + country_overide]['timezone'])
+	timezone = (regions_good.ix[region_override + country_overide]['pytzname'])
+	timezoneid = (regions_good.ix[region_override + country_overide]['timezone'])
 	#print regions_good.ix[region_override + country_overide]['dst']
 	#print regions_good.ix[region_override + country_overide]['std_abv']
 	#print regions_good.ix[region_override + country_overide]['dst_abv']
 
-	return latitude, longitude, timezone, region
+	return latitude, longitude, timezoneid, region, city, country, timezone

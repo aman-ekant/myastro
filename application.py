@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 __author__ = 'naren'
 ########################################################################################################################
-################################################imports#################################################################
+################################################ imports ###############################################################
 import numpy as np
 import birthchart
 import datetime
@@ -26,8 +26,8 @@ import moon_phases
 import eclipse_solar
 import eclipses_lunar
 
-#########################################################################################################################
-################################################Common###################################################################
+#############################################################################################################################
+############################################### Common ######################################################################
 
 con = sqlite3.connect('city', check_same_thread=False)
 curr = con.cursor()
@@ -43,11 +43,11 @@ ip_addrs = ip_add['ip']#'2607:f1c0:83c:7000:0:0:43:963d'
 tt = ''
 if (re.match('^[0-9]{0,3}.[0-9]{0,3}.[0-9]{0,3}.[0-9]{0,3}$', ip_addrs)):
     tt = 1
-    location_latitude, location_longitude, TimezoneID, region  = ip2location_lookup.ipv42loc(ip_addrs)
+    location_latitude, location_longitude, TimezoneID, region, city, country, timezone  = ip2location_lookup.ipv42loc(ip_addrs)
     
 else:
     tt = 0
-    location_latitude, location_longitude, TimezoneID, region  = ip2location_lookup.ipv62loc(ip_addrs)
+    location_latitude, location_longitude, TimezoneID, region, city, country, timezone  = ip2location_lookup.ipv62loc(ip_addrs)
 #print 'latitude is', location_latitude
 #print 'Longitude is', location_longitude
 #print 'region is', region
@@ -59,14 +59,14 @@ month = nows.month
 day = nows.day
 start_time = datetime.datetime.utcnow()
 time_zone = TimezoneID
-#print nows
+#print TimezoneID
+#print timezone
 
 ##########################################################################################################################
-###############################################moon phases API############################################################
+############################################## moon phases API ###########################################################
 rezultsz = moon_phases.phases(year)
 @application.route('/moonphases_api/', methods=['GET'])
 def get_moonphasesx():
-    #return jsonify({'moonphases': rezultsz})
     return jsonify({'moonphases': 'No Data Found',
                     'error': 'missing parameter'})
 
@@ -80,54 +80,63 @@ def moonphasessx(year):
 
 
 ##########################################################################################################################
-#################################################planet hours API#########################################################
-rezults, rezultss = ephemeris_today.plan_hours(TimezoneID, location_longitude, location_latitude)
+################################################ planet hours API ########################################################
+
 @application.route('/hours_api/')
 def hoursx():
-    #return jsonify({'Sunset Planetary Hours' : rezults,'Sunrise Planetary Hours' : rezultss})
     return jsonify({'Planetary Hours': 'No Data Found',
                     'error': 'missing parameters'})
 
-@application.route('/hours_api/<Timezonez>/<lon>/<lat>', methods=['GET'])
-def hoursz(Timezonez, lon, lat):
-    rezults, rezultss = ephemeris_today.plan_hours(float(Timezonez), float(lon), float(lat)) 
+@application.route('/hours_api/<Timezonez1>/<Timezonez2>/<lon>/<lat>', methods=['GET'])
+def hoursz(Timezonez1, Timezonez2, lon, lat):
+    Timezonez = Timezonez1+'/'+Timezonez2
+    rezults, rezultss = ephemeris_today.plan_hours(Timezonez, float(lon), float(lat)) 
     return jsonify({'Sunset Planetary Hours' : rezults,'Sunrise Planetary Hours' : rezultss})
     
-        
 
-@application.route('/hours_api/<Timezonez>/<lon>/')
-def hourrs(Timezonez, lon):
+@application.route('/hours_api/<Timezonez1>/<lon>/')
+def hourra(Timezonez1, lon):
+    return jsonify({'Planetary Hours': 'No Data Found',
+                'error': '2 missing parameter'})       
+
+@application.route('/hours_api/<Timezonez1>/<Timezonez2><lon>/')
+def hourrs(Timezonez1, Timezonez2, lon):
     return jsonify({'Planetary Hours': 'No Data Found',
                 'error': '1 missing parameter'})
 
 
-@application.route('/hours_api/<Timezonez>/')
-def housrs(Timezonez):
+@application.route('/hours_api/<Timezonez1>/')
+def housrs(Timezonez1):
     return jsonify({'Planetary Hours': 'No Data Found',
-                'error': '2 missing parameters'})
+                'error': '3 missing parameters'})
 
 
 
 ##########################################################################################################################
-#################################################ephemeris_today API######################################################
+################################################ ephemeris_today API #####################################################
 
 @application.route('/home_api/')
 def get_homez():
-    #return jsonify({'ephemeris': rezult})
+    return jsonify({'Ephemeris Today': 'No Data Found',
+                    'error': 'missing parameters'})
+@application.route('/home_api/<Timezonez1>/')
+def get_homeqq(Timezonez1):
     return jsonify({'Ephemeris Today': 'No Data Found',
                     'error': 'missing parameters'})
 
-@application.route('/home_api/<Timezonezs>/')
-def get_homex(Timezonezs):
-    rezult  = ephemeris_today.ephe_today(float(Timezonezs), start_time)
+@application.route('/home_api/<Timezonez1>/<Timezonez2>/')
+def get_homex(Timezonez1, Timezonez2):
+    Timezonezs = Timezonez1+'/'+Timezonez2
+    rezult  = ephemeris_today.ephe_today(Timezonezs, start_time)
     return jsonify({'ephemeris': rezult})
 throwaway = datetime.datetime.strptime('20110101','%Y%m%d')
-@application.route('/home_api/<Timezonezs>/<time>/')
+@application.route('/home_api/<Timezonez1>/<Timezonez2>/<time>/')
 def get_homec(Timezonezs, time):
     
     try:
+        Timezonezs = Timezonez1+'/'+Timezonez2
         datetime.datetime.strptime(time, '%Y-%m-%d %H:%M:%S.%f')
-        rezult  = ephemeris_today.ephe_today(float(Timezonezs), datetime.datetime.strptime(time, "%Y-%m-%d %H:%M:%S.%f"))
+        rezult  = ephemeris_today.ephe_today(Timezonezs, datetime.datetime.strptime(time, "%Y-%m-%d %H:%M:%S.%f"))
         return jsonify({'ephemeris': rezult})
     
     except ValueError:
@@ -136,11 +145,10 @@ def get_homec(Timezonezs, time):
 
 
 ##########################################################################################################################
-#################################################solar_eclipse API######################################################
+################################################ solar_eclipse API #######################################################
 
 @application.route('/solareclipse_api/')
 def get_solarz():
-    #return jsonify({'ephemeris': rezult})
     return jsonify({'Solar Eclipse': 'No Data Found',
                     'error': 'missing parameters'})
 
@@ -175,11 +183,11 @@ def get_solarm(Timezonezs, years, months, days, latt, longg):
     return jsonify({'Solar Eclipse': result})
 
 ##########################################################################################################################
-#################################################lunar_eclipse API######################################################
+################################################ lunar_eclipse API #######################################################
 
 @application.route('/lunareclipse_api/')
 def get_lunarz():
-    #return jsonify({'ephemeris': rezult})
+
     return jsonify({'Lunar Eclipse': 'No Data Found',
                     'error': 'missing parameters'})
 
@@ -216,16 +224,23 @@ def get_lunarm(Timezonezs, years, months, days, latt, longg):
 
 
 ##########################################################################################################################
-###################################################Today's Ephemeris######################################################
+################################################## Today's Ephemeris #####################################################
 
 @application.route('/home/')
 def home():
-    rezult  = ephemeris_today.ephe_today(TimezoneID, start_time)
-#ephemeris_today
-    return render_template('home.html', rez=rezult)
+    rezult  = ephemeris_today.ephe_today(timezone, start_time)
+    return render_template('home.html', rez=rezult, region=region, city=city, country=country)
 
 ##########################################################################################################################
-###################################################Planet Risetimes#######################################################
+################################################## Transits #####################################################
+
+@application.route('/transit/')
+def transit():
+    rezult  = ephemeris_today.ephe_trans(timezone, start_time)
+    return render_template('transits.html', rez=rezult)
+
+##########################################################################################################################
+################################################## Planet Risetimes ######################################################
 
 @application.route('/risetimes/')
 def risetimes():
@@ -233,16 +248,16 @@ def risetimes():
     return render_template('planet_rise_times.html', x=x)
 
 ###########################################################################################################################
-###################################################Planetary Hours#########################################################
+################################################## Planetary Hours ########################################################
 
 @application.route('/hours/')
 def hours():
-    rezults, rezultss = ephemeris_today.plan_hours(TimezoneID, location_longitude, location_latitude)
+    rezults, rezultss = ephemeris_today.plan_hours(timezone, location_longitude, location_latitude)
     return render_template('planetary_hours.html', res=rezults, ress=rezultss)
 
 
 ############################################################################################################################
-###################################################Moon Phases##############################################################
+################################################## Moon Phases #############################################################
 
 @application.route('/moonphases/<int:year>')
 def moonphasess(year):
@@ -255,7 +270,7 @@ def moonphases():
     return render_template('moon_phases.html', rez=rezults)
 
 ##############################################################################################################################
-####################################################Solar Eclipse##############################################################
+################################################### Solar Eclipse ############################################################
 
 @application.route('/eclipse/')
 def eclipse():
@@ -269,8 +284,8 @@ def eclipses():
     result = eclipse_solar.solarbypos(time_zone, year, month, day, location_latitude, location_longitude)
     return render_template('solareclipsebyposition.html', rez=result) 
 
-##############################################################################################################################
-#######################################################Lunar Eclipse##############################################################
+###############################################################################################################################
+###################################################### Lunar Eclipse ##########################################################
 
 @application.route('/leclipse/')
 def leclipse():
@@ -285,11 +300,16 @@ def leclipses():
     return render_template('lunareclipsebyposition.html', rez=result) 
 
 ##############################################################################################################################
+###################################################### Index Page ############################################################
 
 @application.route('/')
 def content():
     return render_template('content.html')
 
+##############################################################################################################################
+########################################################## Mains #############################################################
+
 if __name__ == '__main__':
      application.run(debug=True)
 
+###############################################################################################################################
