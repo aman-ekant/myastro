@@ -1,1 +1,1 @@
-Initialising the projects
+Initialising the project
